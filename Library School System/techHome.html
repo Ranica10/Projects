@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+    <title>Welcome Technician</title>
+    <script src="techHome.js"></script>
+</head>
+
+<body onload="getInformation()">
+    <!--this is the navigation bar at the top of the screen that links the other pages for the technician-->
+    <div class="navbar">
+        <h4><a href="techHome.html" target="_self" class="active">Home</a></h4>
+        <h4><a href="checkInOutlog.html" target="_self">Check In/Out Log</a></h4>
+        <h4><a href="inventory.html" target="_self">Inventory</a></h4>
+        <input type="button" value="Logout" class="button" style="margin-left: 100px;" onclick="window.location.href='home.html'">
+    </div>
+
+    <h2>Welcome back</h2>
+
+    <div>
+        <br>
+        <!--this is where the current logged in techinican will see their personal information-->
+        <label for="techNumber">User ID</label>
+        <input type="number" id="techNumber" name="techNumber" value="" readonly>
+
+        <br><br>
+
+        <label for="techPassword">Password</label>
+        <input type="password" id="techPassword" name="techPassword" value="" readonly>
+        <!--the onmouseover allows the password to be seen and when the mouse leaves the button, the password is hidden again-->
+        <button class="button" style="width: fit-content;" onmouseover="viewPasswordTrue()" onmouseout="viewPasswordFalse()">View Password</button>
+    </div>
+
+</body>
+
+<style>
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .navbar {
+        background-color: #184A7D;
+        text-align: center;
+    }
+
+    .navbar a.active {
+        text-decoration: underline;
+    }
+
+    h4 {
+        display: inline-block;
+        padding-inline: 100px;
+    }
+
+    .button {
+        background-color: #001427;
+        color: white;
+        width: 100px;
+        height: 25px;
+        cursor: pointer;
+    }
+</style>

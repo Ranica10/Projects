@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<head>
+    <title>Inventory</title>
+    <script src="addBook.js"></script>
+    <script src="removeBook.js"></script>
+</head>
+
+<body onload="getExistingBookDetails()">
+    <!--this is the navigation bar at the top of the screen that links the other pages for the technician-->
+    <div class="navbar">
+        <h4><a href="techHome.html" target="_self">Home</a></h4>
+        <h4><a href="checkInOutlog.html" target="_self">Check In/Out Log</a></h4>
+        <h4><a href="inventory.html" target="_self" class="active">Inventory</a></h4>
+        <input type="button" value="Logout" class="button" onclick="window.location.href='home.html'" style="margin-left: 100px;">
+    </div>
+
+    <br>
+
+    <!--Tabs-->
+    <div class="tabs">
+        <input type="button" value="Add book" id="addBook" class="addBook">
+        <input type="button" value="Remove book" id="removeBook" class="removeBook">
+    </div>
+
+    <script>
+        //Make Add Book visible on button click
+        document.getElementById("addBook").onclick = function() {
+            var addBookDiv = document.getElementById("addBookDiv");
+            //Checks if it is invisible right now
+            if (addBookDiv.style.display === "none") {
+                //If invisible, it would make it visible and also make the other (removebook) invisible
+                addBookDiv.style.display = "block";
+                removeBookDiv.style.display = "none";
+                //underlines the active button
+                document.getElementById("addBook").style.textDecoration = "underline"
+                //makes the last active button not underlined anymore
+                document.getElementById("removeBook").style.textDecoration = "none";
+            }
+        }
+
+        //Make Remove Book visible on button click
+        document.getElementById("removeBook").onclick = function() {
+            var removeBookDiv = document.getElementById("removeBookDiv");
+            //Checks if it is invisible right now
+            if (removeBookDiv.style.display === "none") {
+                //If invisible, it would make it visible and also make the other (addbook) invisible
+                removeBookDiv.style.display = "block";
+                addBookDiv.style.display = "none";
+                //underlines the active button
+                document.getElementById("removeBook").style.textDecoration = "underline";
+                //makes the last active button not underlined anymore
+                document.getElementById("addBook").style.textDecoration = "none";
+            }
+        }
+    </script>
+
+    <br><br>
+
+    <!--Add Book Form-->
+    <div id="addBookDiv" style="display:none;">
+        <form id="addBookForm" autocomplete="off">
+            <label for="bookId">Book ID:</label>
+            <input type="text" id="bookId" name="bookNumL" required>
+
+            <br><br>
+
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="titleL" required>
+
+            <br><br>
+
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="authorL" required>
+
+            <br>
+
+            <p>Type:</p>
+            <input type="radio" name="bookTypeL" id="f" value="Fiction">
+            <label for="f">Fiction</label>
+
+            <input type="radio" name="bookTypeL" id="nf" value="Non Fiction">
+            <label for="nf">Non Fiction</label>
+
+            <input type="radio" name="bookTypeL" id="gn" value="Graphic Novel">
+            <label for="gn">Graphic Novel</label>
+
+            <br><br>
+
+            <label for="pubdate">DATE</label>
+            <select id="pubdate" name="pubDateL">
+                <option></option>
+                <option value="2020-2030">2020-2030</option>
+                <option value="2010-2020">2010-2020</option>
+                <option value="2000-2010">2000-2010</option>
+                <option value="1990-2000">1990-2000</option>
+                <option value="1980-1990">1980-1990</option>
+                <option value="1970-1980">1970-1980</option>
+                <option value="1960-1970">1960-1970</option>
+                <option value="1950-1960">1950-1960</option>
+            </select>
+
+            <br><br>
+
+            <input type="submit" value="Submit" id="addBookSubmit" onclick="addNewBook(this.form)" class="button">
+        </form>
+    </div>
+
+    <br><br><br><br>
+
+    <div id="removeBookDiv" style="display:none;">
+    <!--Remove Book Form-->
+        <form id="removeBookForm" autocomplete="off">
+            <label for="bookId">Book ID:</label>
+            <input type="text" id="bookId" name="bookNumL" required>
+
+            <br><br>
+
+            <label for="confirm">Confirmation Code:</label>
+            <input type="password" id="confirm" name="confirm" required>
+
+            <br><br>
+
+            <input type="submit" value="Submit" id="removeBookSubmit" class="button" onclick="removeBook(this.form)">
+        </form>
+    </div>
+</body>
+
+<style>
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .navbar a.active {
+        text-decoration: underline;
+    }
+
+    .navbar {
+        background-color: #184A7D;
+        text-align: center;
+    }
+
+    h4 {
+        display: inline-block;
+        padding-inline: 100px;
+    }
+
+    .button {
+        background-color: #001427;
+        color: white;
+        width: 100px;
+        height: 25px;
+        cursor: pointer;
+    }
+
+    .tabs {
+        text-align: center;
+        background-color: #184A7D;
+        display: block;
+    }
+
+    .addBook, .removeBook {
+        background-color: #184A7D;
+        color: white;
+        padding: 10px;
+        width: 500px;
+        border: none;
+        cursor: pointer;
+    }
+
+    #addBookDiv, #removeBookDiv {
+        text-align: center;
+    }
+</style>

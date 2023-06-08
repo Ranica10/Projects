@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<head>
+    <title>Welcome</title>
+    <script src="studLogin.js"></script>
+    <script src="techLogin.js"></script>
+</head>
+
+<body>
+    <h1>NPSS Library Catalog</h1>
+
+    <div class="tabs">
+        <input type="button" value="Student Login" id="studLogin">
+        <input type="button" value="Technician Login" id="techLogin">
+    </div>
+
+    <script>
+        //Make student login visible on button click
+        document.getElementById("studLogin").onclick = function() {
+            var studLoginDiv = document.getElementById("studLoginDiv");
+            //Checks if it is invisible right now
+            if (studLoginDiv.style.display === "none") {
+                //If invisible, it would make it visible and also make the other (tech login) invisible
+                studLoginDiv.style.display = "block";
+                techLoginDiv.style.display = "none";
+                //underlines the active button
+                document.getElementById("studLogin").style.textDecoration = "underline"
+                //makes the last active button not underlined anymore
+                document.getElementById("techLogin").style.textDecoration = "none";
+            }
+        }
+
+        //Make tech login visible on button click
+        document.getElementById("techLogin").onclick = function() {
+            var techLoginDiv = document.getElementById("techLoginDiv");
+            var img = document.getElementById("image");
+            //Checks if it is invisible right now
+            if (techLoginDiv.style.display === "none") {
+                //If invisible, it would make it visible and also make the other (student login) invisible
+                techLoginDiv.style.display = "block";
+                studLoginDiv.style.display = "none";
+                //underlines the active button
+                document.getElementById("techLogin").style.textDecoration = "underline";
+                //makes the last active button not underlined anymore
+                document.getElementById("studLogin").style.textDecoration = "none";
+            }
+        }
+    </script>
+
+    <br>
+
+    <img id="image" width="400px" height="300px" src="https://images.pexels.com/photos/214659/pexels-photo-214659.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+
+    <br><br>
+    <!--student login-->
+    <div id="studLoginDiv" style="display: none;">
+        <form>
+            <label for="studNumber">Student #</label>
+            <input type="number" id="studNumber" name="studNumber" max="5" required>
+
+            <br><br>
+
+            <input type="button" value="Login" class="button" onclick="studLogin(this.form)">
+        </form>
+    </div>
+
+    <!--technician login-->
+    <div id="techLoginDiv" style="display: none;">
+        <form>
+            <br><br>
+
+            <label for="techNumber">User ID</label>
+            <input type="number" id="techNumber" name="techNumber" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="techPassword" required>
+
+            <br><br>
+
+            <input type="button" value="Login" class="button" onclick="techLogin(this.form)">
+        </form>
+    </div>
+
+</body>
+
+<style>
+    h1 {
+        background-color: #184A7D;
+        text-align: center;
+        color: white;
+        padding: 10px;
+    }
+
+    .button {
+        background-color: #001427;
+        color: white;
+        width: 100px;
+        height: 25px;
+        cursor: pointer;
+    }
+
+    .tabs {
+        text-align: center;
+        background-color: #184A7D;
+        display: block;
+    }
+
+    #studLogin, #techLogin {
+        background-color: #184A7D;
+        color: white;
+        padding: 10px;
+        width: 500px;
+        border: none;
+        cursor: pointer;
+    }
+
+    #studLoginDiv, #techLoginDiv {
+        text-align: center;
+    }
+
+    #image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 40%;
+        z-index: -1;
+    }
+</style>

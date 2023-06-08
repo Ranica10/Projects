@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<head>
+    <title>Check In/Out Log</title>
+    <script src="checkOut.js"></script>
+    <script src="checkIn.js"></script>
+</head>
+
+<body>
+    <!--this is the navigation bar at the top of the screen that links the other pages for the technician-->
+    <div class="navbar">
+        <h4><a href="techHome.html" target="_self">Home</a></h4>
+        <h4><a href="checkInOutlog.html" target="_self" class="active">Check In/Out Log</a></h4>
+        <h4><a href="inventory.html" target="_self">Inventory</a></h4>
+        <input type="button" value="Logout" onclick="window.location.href='home.html'" class="button" style="margin-left: 100px;">
+    </div>
+
+    <br>
+
+    <div class="tabs">
+        <input type="button" value="Check In" id="checkIn" class="checkIn">
+        <input type="button" value="Check out" id="checkOut" class="checkOut">
+    </div>
+
+    <script>
+        //Make check in visible on button click
+        document.getElementById("checkIn").onclick = function() {
+            var checkInDiv = document.getElementById("checkInDiv");
+            //Checks if it is invisible right now
+            if (checkInDiv.style.display === "none") {
+                //If invisible, it would make it visible and also make the other (check out) invisible
+                checkInDiv.style.display = "block";
+                checkOutDiv.style.display = "none";
+                //underlines the active button
+                document.getElementById("checkIn").style.textDecoration = "underline"
+                //makes the last active button not underlined anymore
+                document.getElementById("checkOut").style.textDecoration = "none";
+            }
+        }
+
+        //Make Remove Book visible on button click
+        document.getElementById("checkOut").onclick = function() {
+            var checkOutDiv = document.getElementById("checkOutDiv");
+            //Checks if it is invisible right now
+            if (checkOutDiv.style.display === "none") {
+                //If invisible, it would make it visible and also make the other (addbook) invisible
+                checkOutDiv.style.display = "block";
+                checkInDiv.style.display = "none";
+                //underlines the active button
+                document.getElementById("checkOut").style.textDecoration = "underline";
+                //makes the last active button not underlined anymore
+                document.getElementById("checkIn").style.textDecoration = "none";
+            }
+        }
+    </script>
+
+    <br>
+    <!--this is the form for checking in a book-->
+    <div id="checkInDiv"  style="display:none;">
+        <form>
+            <br>
+
+            <label for="bookIn">Book ID</label>
+            <input type="number" id="bookIn" name="bookIn" required>
+
+            <br><br>
+
+            <input type="submit" value="Submit" class="button" onclick="checkInBook(this.form)">
+        </form>
+    </div>
+
+    <!--this is the form for checking out a book-->
+    <div id="checkOutDiv" style="display:none;">
+        <form>
+            <br>
+
+            <label for="bookId">Book ID</label>
+            <input type="number" id="bookId" name="bookOut" required>
+
+            <br><br>
+
+            <input type="submit" value="Submit" class="button" onclick="checkOutBook(this.form)">
+        </form>
+    </div>
+
+    <br><br>
+</body>
+
+<style>
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .navbar {
+        background-color: #184A7D;
+        text-align: center;
+    }
+
+    .navbar a.active {
+        text-decoration: underline;
+    }
+
+    h4 {
+        display: inline-block;
+        padding-inline: 100px;
+    }
+
+    .button {
+        background-color: #001427;
+        color: white;
+        width: 100px;
+        height: 25px;
+        cursor: pointer;
+    }
+
+    .tabs {
+        text-align: center;
+        background-color: #184A7D;
+        display: block;
+    }
+
+    .checkIn, .checkOut {
+        background-color: #184A7D;
+        color: white;
+        padding: 10px;
+        width: 500px;
+        border: none;
+        cursor: pointer;
+    }
+
+    #checkInDiv, #checkOutDiv {
+        text-align: center;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: fit-content;
+    }
+
+    table {
+        text-align: center;
+    }
+</style>

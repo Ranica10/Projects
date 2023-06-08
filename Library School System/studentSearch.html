@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Student Search Page</title>
+    <script src="search.js"></script>
+    <script src="studentResults.js"></script>
+</head>
+
+<body>
+    <h1 class="header">NPSS Library Catalog <input type="button" onclick="window.location.href='home.html'" value="LOGOUT" class="button" style="position: absolute; right: 50px; top: 50px; cursor: pointer;"></h1>
+
+    <script>
+
+    </script>
+
+    <br>
+    <!--the form to submit the book the student wants to search for-->
+    <form autocomplete="off">
+        <div class="mainSearch">
+            <label for="title"><b>TITLE</b></label>
+            <input type="text" name="titleS" id="title" style="width: 800px;">
+
+            <br><br>
+
+            <label for="bookID"><b>BOOK ID</b></label>
+            <input type="number" name="bookNumS" id="bookID" style="width: 300px; margin-right: 20px;">
+
+
+            <label for="author"><b>AUTHOR</b></label>
+            <input type="text" name="authorS" id="author" style="width: 380px;">
+
+            <br><br>
+
+            <input type="submit" value="SEARCH" id="searchBookSubmit" class="button" onclick="getStudentSearchData(this.form);">
+        </div>
+
+        <!--the filter section will go in a separate div on the left side of the screen-->
+        <div class="filter">
+            <h4 style="text-align: center;"><b>FILTER</b></h4>
+
+            <label for="pubdate"><b>DATE</b></label>
+            <select id="pubdate" name="pubDateS">
+                <option></option>
+                <option value="2020-2030">2020-2030</option>
+                <option value="2010-2020">2010-2020</option>
+                <option value="2000-2010">2000-2010</option>
+                <option value="1990-2000">1990-2000</option>
+                <option value="1980-1990">1980-1990</option>
+                <option value="1970-1980">1970-1980</option>
+                <option value="1960-1970">1960-1970</option>
+                <option value="1950-1960">1950-1960</option>
+            </select>
+
+            <br><br>
+            <!--it is still included in the same form element although-->
+            <p><b>TYPE</b></p>
+            <input type="checkbox" name="bookTypeSFiction" value="Fiction" id="f">
+            <label for="f">Fiction</label>
+
+            <br><br>
+
+            <input type="checkbox" name="bookTypeSNonFiction" value="Non Fiction" id="nf">
+            <label for="nf">Non-Fiction</label>
+
+            <br><br>
+
+            <input type="checkbox" name="bookTypeSGraphicNovel" value="Graphic Novel" id="gn">
+            <label for="gn">Graphic Novel</label>
+        </div>
+    </form>
+    <br>
+</body>
+
+<!--display search results-->
+<body onload="displayResults()">
+    <div class="displayResults">
+        <!--<p id="displayResults"></p>-->
+        <p id="noResults"></p>
+        <!--This is where the results will be displayed in a table-->
+        <table id="tableResults" style="display: none;">
+            <tr>
+                <th style="width: 150px;">ID Number</th>
+                <th style="width: 400px;">Title</th>
+                <th style="width: 300px;">Author</th>
+                <th style="width: 200px;">Type</th>
+                <th style="width: 150px;">Date Published</th>
+                <th style="width: 100px;">Status</th>
+            </tr>
+          </table>
+    </div>
+</body>
+
+<style>
+    .header {
+        background-color: #184A7D;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .button {
+        background-color: #001427;
+        color: white;
+        width: 100px;
+        height: 25px;
+    }
+
+    .mainSearch {
+        text-align: center;
+        margin-left: 100px;
+        justify-content: center;
+    }
+
+    .filter {
+        width: 250px;
+        height: 70vh;
+        padding: 5px;
+        background-color:#CBD0D4;
+        margin-bottom: auto;
+        margin-top: -104px;
+        padding-bottom: 25px;
+    }
+
+    .displayResults {
+        background-color: #CBD0D4;
+        width: 75vw;
+        height: 50vh;
+        position: absolute; left: 300px; top: 270px;
+        padding: 20px;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: fit-content;
+    }
+
+    table {
+        text-align: center;
+    }
+</style>
